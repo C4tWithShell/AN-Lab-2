@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        AN Lab 2 - MPLS - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit;overflow:visible}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.figma{display:table;position:relative;width:100%;padding-bottom:56.25%}.figma iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;border:1px solid #eee}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{height:40px;padding:10px 4px;border-top-left-radius:0;border-bottom-left-radius:0}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:20px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:50%;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;text-decoration:none;padding-left:22px}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em;font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="AN-Lab-2---MPLS" data-id="AN-Lab-2---MPLS" data-original-title="" title=""><a class="anchor hidden-xs" href="#AN-Lab-2---MPLS" title="AN-Lab-2---MPLS"><span class="octicon octicon-link"></span></a><span>AN Lab 2 - MPLS</span></h1><p><strong><span>Name: Vladimir Shelkovnikov</span></strong></p><hr><h2 id="Task-1---Prepare-your-network-topology" data-id="Task-1---Prepare-your-network-topology"><a class="anchor hidden-xs" href="#Task-1---Prepare-your-network-topology" title="Task-1---Prepare-your-network-topology"><span class="octicon octicon-link"></span></a><span>Task 1 - Prepare your network topology</span></h2><div class="alert alert-success">
+<ol>
+<li><span>In the GNS3 project, select and install a virtual routing solution that you would like to use: for example, Mikrotik, Pfsense, vyos.</span></li>
+<li><span>Prepare a simple network consisting of at least three routers and two hosts (for example, a bus topology with dynamic routing). Each one of them has a different subnet. Your network has to have routing protocols configured. That’s why you can use your OSPF lab project from the INR course</span></li>
+</ol>
+</div><p><span>I would like to use MikroTik as a routing solution. I prepared a simple network shown in Figure 1.</span></p><center>
+<p><img src="https://i.imgur.com/cN2vu93.png" alt="" loading="lazy"><br>
+<span>Figure 1 - Simple network</span></p>
+</center><p><span>There are 6 subnets - 10.10.10.0/24 (between routers 1, 2 and 3), 10.10.20.0/24, 10.10.30.0/24, 10.10.40.0/24, 10.10.50.0/24, 10.10.60.0/24 (between router 2 and 3).</span></p><p><span>So first I set up IP addresses of routers and then configured PCs with netplan. Figure 2 shows the example of the configuration.</span></p><center>
+<p><img src="https://i.imgur.com/8DO8X9G.png" alt="" loading="lazy"><br>
+<span>Figure 2 - Example of configuration of PCs</span></p>
+</center><p><span>After that, I created the loopback interface, which I select as the OSPF router ID.</span></p><pre><code>interface bridge add name=loopback arp=enabled
+ip address add address=10.255.255.&lt;id&gt;/32 interface=loopback
+routing ospf instance edit 0 router-id &lt;ip&gt;
+</code></pre><div class="alert alert-info">
+<p><code>&lt;id&gt;</code><span> - number of router ( Router1 - 1, Router2 - 2 and etc).</span><br>
+<code>&lt;ip&gt;</code><span> - IP of the loopback interface for router (Router1 - 10.255.255.1/32, Router2 - 10.255.255.2/32 and etc).</span></p>
+</div><p><span>Then I moved on to setting up OSPF networks for each router.</span><br>
+<code>routing ospf network add area=backbone network=&lt;subnet&gt;</code><span>.</span></p><div class="alert alert-info">
+<p><code>&lt;subnet&gt;</code><span> - 10.10.10.0/24 for Router1; 10.10.10.0/24, 10.10.20.0/24, 10.10.60.0/24 for Router2 and etc.</span></p>
+</div><p><span>This completes the OSPF configuration. Then interfaces should appear on the OSPF Interfaces tab, and Routes should appear on the Routes tab (Figure 3).</span></p><center>
+<p><img src="https://i.imgur.com/Cmjnnxg.png" alt="" loading="lazy"><br>
+<span>Figure 3 - OSPF routes</span></p>
+</center><hr><h2 id="Task-2---MPLS-learning-amp-configuring" data-id="Task-2---MPLS-learning-amp-configuring"><a class="anchor hidden-xs" href="#Task-2---MPLS-learning-amp-configuring" title="Task-2---MPLS-learning-amp-configuring"><span class="octicon octicon-link"></span></a><span>Task 2 - MPLS learning &amp; configuring</span></h2><div class="alert alert-success">
+<ol>
+<li><span>Briefly answer the questions or give a one-line description what is it: LSP, VPLS, PHP, LDP, MPLS L2VPN, CE-router, PE-router, LSR-router?</span></li>
+</ol>
+</div><hr><blockquote>
+<h4 id="LSP" data-id="LSP"><a class="anchor hidden-xs" href="#LSP" title="LSP"><span class="octicon octicon-link"></span></a><span>LSP</span></h4>
+<blockquote>
+<p><span>LSP (Label Switched Path) is a packet path that is set based on the LDP, RSVP-TE, BGP, or CR-LDP protocols.</span></p>
+</blockquote>
+</blockquote><hr><blockquote>
+<h4 id="VPLS" data-id="VPLS"><a class="anchor hidden-xs" href="#VPLS" title="VPLS"><span class="octicon octicon-link"></span></a><span>VPLS</span></h4>
+<blockquote>
+<p><span>VPLS is a multipoint channel, for the client it looks like a virtual “dumb” switch that transparently passes any packets. It provides Ethernet-based multipoint to multipoint communication over IP or MPLS networks.</span></p>
+</blockquote>
+</blockquote><hr><blockquote>
+<h4 id="PHP" data-id="PHP"><a class="anchor hidden-xs" href="#PHP" title="PHP"><span class="octicon octicon-link"></span></a><span>PHP</span></h4>
+<blockquote>
+<p><span>Penultimate Hop Popping - performing a pop action on the penultimate router. Without this feature, the last router has to view the packet labels twice.</span></p>
+</blockquote>
+</blockquote><hr><blockquote>
+<h4 id="LDP" data-id="LDP"><a class="anchor hidden-xs" href="#LDP" title="LDP"><span class="octicon octicon-link"></span></a><span>LDP</span></h4>
+<blockquote>
+<p><span>This is a protocol with the task of finding neighbors, exchanging networks and labels with them, and creating a forwarding table. The peculiarity of LDP is that it is completely subject to routing.</span></p>
+</blockquote>
+</blockquote><hr><blockquote>
+<h4 id="MPLS-L2VPN" data-id="MPLS-L2VPN"><a class="anchor hidden-xs" href="#MPLS-L2VPN" title="MPLS-L2VPN"><span class="octicon octicon-link"></span></a><span>MPLS L2VPN</span></h4>
+<blockquote>
+<p><span>This is a set of different technologies, the transport for which is MPLS LSP. It allows you to transmit any</span><br>
+<span>Layer 2 traffic over the MPLS network.</span></p>
+</blockquote>
+</blockquote><hr><blockquote>
+<h4 id="CE-router" data-id="CE-router"><a class="anchor hidden-xs" href="#CE-router" title="CE-router"><span class="octicon octicon-link"></span></a><span>CE-router</span></h4>
+<blockquote>
+<p><span>CE-router is not a member of the MPLS network and does not know anything about it. It’s just a client device that has L2/L3 connectivity with PE-router</span></p>
+</blockquote>
+</blockquote><hr><blockquote>
+<h4 id="PE-router" data-id="PE-router"><a class="anchor hidden-xs" href="#PE-router" title="PE-router"><span class="octicon octicon-link"></span></a><span>PE-router</span></h4>
+<blockquote>
+<p><span>This is the router that operates at the edge of the MPLS network. It is a gateway for the client and forwards its traffic to the provider’s MPLS network.</span></p>
+</blockquote>
+</blockquote><hr><blockquote>
+<h4 id="LSR-router" data-id="LSR-router"><a class="anchor hidden-xs" href="#LSR-router" title="LSR-router"><span class="octicon octicon-link"></span></a><span>LSR-router</span></h4>
+<blockquote>
+<p><span>It is an MPLS router that does routing based on the MPLS label. It transparently passes MPLS traffic without analyzing its contents.</span></p>
+</blockquote>
+</blockquote><hr><div class="alert alert-success">
+<ol start="2">
+<li><span>Configure MPLS domain on your OSPF network, first without authentication.</span><br>
+<span>Hint: it is assumed that OSPF has already been configured previously.</span></li>
+</ol>
+</div><p><span>To distribute labels for routes, LDP needs to be enabled. I need to add and configure the MPLS system. Then all interfaces that participate in MPLS need to be added.</span></p><p><span>For routers configuration will be look like shown below.</span></p><pre><code>mpls ldp set enabled=yes lsr-id=&lt;ip&gt; transport-address=&lt;ip&gt;
+mpls ldp interface add interface=&lt;interface&gt;
+</code></pre><div class="alert alert-info">
+<p><code>&lt;ip&gt;</code><span> - IP of the loopback interface for router (Router1 - 10.255.255.1, Router4 - 10.255.255.4 and etc).</span><br>
+<code>&lt;interface&gt;</code><span> - ether1, ether2 or ether1, ether2, ether3.</span></p>
+</div><p><span>After this is done. I can check the LDP neighbors to see if it works (Figure 4).</span></p><center>
+<p><img src="https://i.imgur.com/aOCWuX4.png" alt="" loading="lazy"><br>
+<span>Figure 4 - LDP Neighbors</span></p>
+</center><hr><div class="alert alert-success">
+<ol start="3">
+<li><span>Enable authentication (what kind of authentication did you use)? Make sure that you can ping and trace all your network.</span></li>
+</ol>
+</div><p><span>There are two types of authentication in MikroTik. I choose md5 authentication and I’m going to show why.</span></p><p><span>So let’s look at md5 authentication first. I have enabled authentication on the ether1 interface of Router5.</span></p><p><code>routing ospf interface add interface=ether1 authentication=md5 authentication-key=hello</code></p><p><span>And then I did the same with the ether3 interface of Router3.</span></p><p><code>routing ospf interface add interface=ether3 authentication=md5 authentication-key=hello</code></p><p><span>And then if I look at the OSPF traffic between them, I won’t be able to see the authentication data because it’s encrypted (Figure 5).</span></p><center>
+<p><img src="https://i.imgur.com/WSAOL68.png" alt="" loading="lazy"><br>
+<span>Figure 5 - Encrypted OSPF traffic</span></p>
+</center><p><span>Now let’s look at simple authentication. I have enabled it on the ether1 interface of Router4.</span></p><p><code>routing ospf interface add interface=ether1 authentication=simple  authentication-key=hello</code></p><p><span>And then I did the same with the ether3 interface of Router3</span></p><p><code>routing ospf interface add interface=ether3 authentication=simple authentication-key=hello</code></p><p><span>And then if I look at the OSPF traffic between them, I will see the authentication data (Figure 6).</span></p><center>
+<p><img src="https://i.imgur.com/LcYsBQO.png" alt="" loading="lazy"><br>
+<span>Figure 6 - Transparent OSPF traffic</span></p>
+</center><hr><h2 id="Task-3---Verification" data-id="Task-3---Verification"><a class="anchor hidden-xs" href="#Task-3---Verification" title="Task-3---Verification"><span class="octicon octicon-link"></span></a><span>Task 3 - Verification</span></h2><div class="alert alert-success">
+<ol>
+<li><span>Show your LDP neighbors.</span><br>
+<span>Hint: in the case if you have some problems… think about whether there are enough routers and  subnets for MPLS to pass the route?</span></li>
+</ol>
+</div><p><span>I can show LDP neighbors in MikroTik using the command </span><code>mpls ldp neighbor print</code><span>. Figure 7 shows the LDP neighbors for Router2.</span></p><center>
+<p><img src="https://i.imgur.com/X4LE5vW.png" alt="" loading="lazy"><br>
+<span>Figure 7 - LDP neighbors for Router2</span></p>
+</center><hr><div class="alert alert-success">
+<ol start="2">
+<li><span>Show your local LDP bindings and remote LDP peer labels.</span></li>
+</ol>
+</div><p><span>The </span><code>mpls local-bindings print</code><span> command will show the local LDP binding. Figure 8 shows the local LDP bindings for Router5.</span></p><center>
+<p><img src="https://i.imgur.com/torPdGp.png" alt="" loading="lazy"><br>
+<span>Figure 8 - Local LDP bindings for Router5</span></p>
+</center><p><span>The </span><code>mpls remote-bindings print</code><span> command will show the remote LDP binding. Figure 9 shows the remote LDP bindings for Router3.</span></p><center>
+<p><img src="https://i.imgur.com/KTQMvn1.png" alt="" loading="lazy"><br>
+<span>Figure 9 - Remote LDP bindings for Router3</span></p>
+</center><p><span>Row “Label” is remote LDP peer labels.</span><br>
+<span>To be able to see which of the routers has set the label, so I’m going to set a unique set of labels for each of them:</span><br>
+<span>Router1 - 1000-3999,</span><br>
+<span>Router2 - 4000-6999,</span><br>
+<span>Router3 - 7000-9999,</span><br>
+<span>Router4 - 10000-12999,</span><br>
+<span>Router5 - 13000-15999.</span></p><p><span>To do this, I used the command </span><code>mpls set dynamic-label-range=100-199</code><span>.</span></p><hr><div class="alert alert-success">
+<ol start="3">
+<li><span>Show your MPLS labels.</span></li>
+<li><span>Show your forwarding table.</span></li>
+</ol>
+</div><p><span>I have already set up unique sets of labels for each router. But let’s clarify some points in the labels.</span></p><p><span>Figure 10 shows Router1 local labels - labels that the router will use if necessary to send traffic.</span></p><center>
+<p><img src="https://i.imgur.com/5OPMcq3.png" alt="" loading="lazy"><br>
+<span>Figure 10 - Local labels</span></p>
+</center><p><span>Figure 11 shows Router1 remote labels - labels that the router received from other routers</span></p><center>
+![](https://i.imgur.com/fLGFCPD.png)
+Figure 11 - Remote labels
+</center><p><span>When it is necessary to redirect traffic over the network, the following tags will be used (Figure 12).</span></p><center>
+<p><img src="https://i.imgur.com/kIXkoHn.png" alt="" loading="lazy"><br>
+<span>Figure 12 - Forwarding table</span></p>
+</center><p><span>If the packet has a label 1003, Router1 will set the label 7001 for it.</span></p><hr><div class="alert alert-success">
+<ol start="5">
+<li><span>Show your network path from one customer edge to the other customer edge.</span><br>
+<span>Hint: you can use traceroute command.</span></li>
+</ol>
+</div><p><span>Figure 13 shows the network path from one customer edge to the other.</span></p><center>
+<p><img src="https://i.imgur.com/L1dH6KI.png" alt="" loading="lazy"><br>
+<span>Figure 13 - Network path</span></p>
+</center><p><span>Router2 sets the label 4009 and sends it to router 3.</span><br>
+<span>Router3 sets the label 7006 and sends it to router 5.</span><br>
+<span>Router5 removes the label and sends the packet to PC2.</span></p><hr><h2 id="Task-4---MPLS-packets-analysis" data-id="Task-4---MPLS-packets-analysis"><a class="anchor hidden-xs" href="#Task-4---MPLS-packets-analysis" title="Task-4---MPLS-packets-analysis"><span class="octicon octicon-link"></span></a><span>Task 4 - MPLS packets analysis</span></h2><div class="alert alert-success">
+<ol>
+<li><span>Can you use Wireshark to see the MPLS packets?</span></li>
+<li><span>Look deeper into the MPLS packets: can you identify MAC address, ICMP, Ethernet header or something else useful?</span></li>
+</ol>
+</div><p><span>I can see LDP packets (Hello packets) using Wireshark as shown in Figure 14.</span></p><center>
+<p><img src="https://i.imgur.com/Lmfzfrh.png" alt="" loading="lazy"><br>
+<span>Figure 14 - LDP packet</span></p>
+</center><p><span>But all I can get from it is an IPv4 transport address.</span></p><p><span>Also, I see the MPLS header inside the packages (Figure 15).</span></p><center>
+<p><img src="https://i.imgur.com/57pJUyD.png" alt="" loading="lazy"><br>
+<span>Figure 15 - MPLS Header</span></p>
+</center><p><span>But it’s also useless</span></p><hr><h2 id="Task-5---VPLS" data-id="Task-5---VPLS"><a class="anchor hidden-xs" href="#Task-5---VPLS" title="Task-5---VPLS"><span class="octicon octicon-link"></span></a><span>Task 5 - VPLS</span></h2><div class="alert alert-success">
+<ol>
+<li><span>Configure VPLS between the 2 hosts edges.</span><br>
+<span>Hint: you should connect the hosts connected to the router in one subnet to the router from the  second subnet without changing the topology physically. To do this try to configure VPLS that runs on L2.</span></li>
+</ol>
+</div><hr><center>
+<h3 id="Configuring-VPLS" data-id="Configuring-VPLS"><a class="anchor hidden-xs" href="#Configuring-VPLS" title="Configuring-VPLS"><span class="octicon octicon-link"></span></a><span>Configuring VPLS</span></h3>
+</center><hr><p><span>I have created bridges on routers 4 and 5:</span><br>
+<span>Router4 - </span><code>interface bridge add name=vpls4</code><br>
+<span>Router5 - </span><code>interface bridge add name=vpls5</code></p><p><span>Then I created vpls interfaces on them:</span></p><p><span>Router4:</span><code>interface vpls add disabled=no l2mtu=1500 name=tunnel4 remote-peer=10.255.255.5 vpls-id=90:0</code><br>
+<span>Router5:</span><code>interface vpls add disabled=no l2mtu=1500 name=tunnel5 remote-peer=10.255.255.4 vpls-id=90:0</code></p><p><span>After that, I configured bridgeport on both routers:</span><br>
+<span>Router4:</span></p><pre><code>interface bridge port add bridge=vpls4 interface=ether2
+interface bridge port add bridge=vpls4 interface=tunnel4
+</code></pre><p><span>Router5:</span></p><pre><code>interface bridge port add bridge=vpls5 interface=ether2
+interface bridge port add bridge=vpls5 interface=tunnel5
+</code></pre><hr><div class="alert alert-success">
+<ol start="2">
+<li><span>Show your LDP neighbors again, what has been changed?</span></li>
+</ol>
+</div><p><span>Let’s now look at the LDP neighbors in Router4 (Figure 16).</span></p><center>
+<p><img src="https://i.imgur.com/Us8HV0Q.png" alt="" loading="lazy"><br>
+<span>Figure 16 - LDP neighbors</span></p>
+</center><p><span>Now there is a new neighbor with the following flags - Sending-targeted-hello (T) and VPLS (V).</span></p><hr><div class="alert alert-success">
+<ol start="3">
+<li><span>Find a way to prove that the two customers can communicate at OSI layer 2.</span></li>
+</ol>
+</div><p><span>At this point, I have created a Layer 2 connection between whatever is plugged into ether1 in Router4 and ether1 in Router5.</span></p><p><span>So I can change the IP addresses of the PCs as shown in Figure 17.</span></p><center>
+<p><img src="https://i.imgur.com/WimWRBi.png" alt="" loading="lazy"><br>
+<span>Figure 17 - PCs configuration changed</span></p>
+</center><p><span>Let’s see if it works (Figures 18 and 19).</span></p><center>
+<p><img src="https://i.imgur.com/GiBJyAg.png" alt="" loading="lazy"><br>
+<span>Figure 18 - traceroute</span></p>
+<p><img src="https://i.imgur.com/xutAJdZ.png" alt="" loading="lazy"><br>
+<span>Figure 19 - ping</span></p>
+</center><hr><div class="alert alert-success">
+<ol start="4">
+<li><span>Is it required to disable PHP? Explain your answer.</span></li>
+</ol>
+</div><p><span>Penultimate hop popping of transport label causes packets to arrive at VPLS tunnel endpoint with just one tag - tunnel tag. This makes the VPLS tunnel endpoint do just one label lookup to find out what to do with the packet. Thus, it can either discard the frame if the router does not recognize the packet or redirect it in the wrong way.</span></p><p><span>Another issue is having VPLS tunnel endpoints directly connected because there are no transport labels they can use between themselves. They both instruct another one to be the penultimate hop popping router for their tunnel endpoint address.</span></p><hr><h2 id="Bonus---VPWS" data-id="Bonus---VPWS"><a class="anchor hidden-xs" href="#Bonus---VPWS" title="Bonus---VPWS"><span class="octicon octicon-link"></span></a><span>Bonus - VPWS</span></h2><div class="alert alert-success">
+<ol>
+<li><span>Rebuild your topology to get a pseudowire P2P that emulates OSI layer 2.</span></li>
+<li><span>Repeat the steps from Task 5, but now with VPWS.</span></li>
+</ol>
+</div><p><span>I have changed my topology as shown in Figure 20</span></p><center>
+<p><img src="https://i.imgur.com/2I3UmYG.png" alt="" loading="lazy"><br>
+<span>Figure 20 - Changed topology</span></p>
+</center><p><span>Then I created a new bridge on Router2:</span></p><pre><code>interface bridge add name=bridge
+interface bridge port add bridge=bridge interface=ether2
+interface bridge port add bridge=bridge interface=ether3
+</code></pre><p><span>Then I set up the pppoe server (Router2)</span><br>
+<code>interface pppoe-server server add interface=bridge service-name=mpls max-mru=1500 max-mtu=1500</code></p><p><span>I added new user accounts to server:</span></p><pre><code>ppp secret add name=mplsR3 service=pppoe remote-address=10.10.20.2 local-address=10.10.20.1
+ppp secret add name=mplsR4 service=pppoe remote-address=10.10.20.3 local-address=10.10.20.1
+
+interface pppoe-server add name=mplsR3 user=mplsR3 service=mpls 
+interface pppoe-server add name=mplsR4 user=mplsR4 service=mpls 
+</code></pre><p><span>After that I added new interfaces to MPLS:</span></p><pre><code>mpls ldp interface add interface=mplsR3
+mpls ldp interface add interface=mplsR4
+</code></pre><p><span>Now I’m done with router 2 as the server. Let’s move on to the customers.</span></p><p><span>Router3:</span></p><pre><code>interface pppoe-client add name=mplsR3 max-mtu=1500 max-mru=1
+500 interface=ether1 user=mplsR3 service-name=mpls
+mpls ldp interface add interface=mplsR3
+</code></pre><p><span>Router4:</span></p><pre><code>interface pppoe-client add name=mplsR4 max-mtu=1500 max-mru=1
+500 interface=ether1 user=mplsR4 service-name=mpls
+mpls ldp interface add interface=mplsR4
+</code></pre><p><span>All I need to do now is turn on the server and clients</span></p><p><span>Router2 - </span><code>interface pppoe-server server enable 0</code><br>
+<span>Routers 3 and 4 - </span><code>interface pppoe-client enable 0</code></p><p><span>Let’s see if they are connected (Figures 21, 22).</span></p><center>
+<p><img src="https://i.imgur.com/Fp3EPAi.png" alt="" loading="lazy"><br>
+<span>Figure 21 - Connection status</span></p>
+<p><img src="https://i.imgur.com/kdcfcAU.png" alt="" loading="lazy"><br>
+<span>Figure 22 - Connection status</span></p>
+</center><p><span>Figure 23 shows the LDP neighbors.</span></p><center>
+<p><img src="https://i.imgur.com/5jxiicy.png" alt="" loading="lazy"><br>
+<span>Figure 23 - LDP neighbors</span></p>
+</center><p><span>Nothing has changed here.</span></p><hr><h2 id="References" data-id="References"><a class="anchor hidden-xs" href="#References" title="References"><span class="octicon octicon-link"></span></a><span>References</span></h2><ol>
+<li><a href="https://ubuntu.com/server/docs/network-configuration" target="_blank" rel="noopener"><span>Network Configuration</span></a></li>
+<li><a href="https://www.manitonetworks.com/mikrotik/2016/5/24/mikrotik-mpls-with-vpls" target="_blank" rel="noopener"><span>Mikrotik MPLS with VPLS</span></a></li>
+<li><a href="https://habr.com/ru/post/169103/" target="_blank" rel="noopener"><span>MPLS and VPLS on Mikrotik</span></a></li>
+<li><a href="https://mikrotik.me/blog-MikroTik-dlya-bolshih-dyadey-N4.html" target="_blank" rel="noopener"><span>MikroTik and VPLS</span></a></li>
+<li><a href="https://linkmeup.ru/blog/1219/" target="_blank" rel="noopener"><span>MPLS L2VPN</span></a></li>
+<li><a href="https://wiki.mikrotik.com/wiki/Manual:MPLSVPLS" target="_blank" rel="noopener"><span>MikroTik Manual:MPLSVPLS</span></a></li>
+</ol></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#AN-Lab-2---MPLS" title="AN Lab 2 - MPLS">AN Lab 2 - MPLS</a><ul class="nav">
+<li><a href="#Task-1---Prepare-your-network-topology" title="Task 1 - Prepare your network topology">Task 1 - Prepare your network topology</a></li>
+<li><a href="#Task-2---MPLS-learning-amp-configuring" title="Task 2 - MPLS learning &amp; configuring">Task 2 - MPLS learning &amp; configuring</a></li>
+<li><a href="#Task-3---Verification" title="Task 3 - Verification">Task 3 - Verification</a></li>
+<li><a href="#Task-4---MPLS-packets-analysis" title="Task 4 - MPLS packets analysis">Task 4 - MPLS packets analysis</a></li>
+<li><a href="#Task-5---VPLS" title="Task 5 - VPLS">Task 5 - VPLS</a></li>
+<li><a href="#Bonus---VPWS" title="Bonus - VPWS">Bonus - VPWS</a></li>
+<li><a href="#References" title="References">References</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#AN-Lab-2---MPLS" title="AN Lab 2 - MPLS">AN Lab 2 - MPLS</a><ul class="nav">
+<li><a href="#Task-1---Prepare-your-network-topology" title="Task 1 - Prepare your network topology">Task 1 - Prepare your network topology</a></li>
+<li><a href="#Task-2---MPLS-learning-amp-configuring" title="Task 2 - MPLS learning &amp; configuring">Task 2 - MPLS learning &amp; configuring</a></li>
+<li><a href="#Task-3---Verification" title="Task 3 - Verification">Task 3 - Verification</a></li>
+<li><a href="#Task-4---MPLS-packets-analysis" title="Task 4 - MPLS packets analysis">Task 4 - MPLS packets analysis</a></li>
+<li><a href="#Task-5---VPLS" title="Task 5 - VPLS">Task 5 - VPLS</a></li>
+<li><a href="#Bonus---VPWS" title="Bonus - VPWS">Bonus - VPWS</a></li>
+<li><a href="#References" title="References">References</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
